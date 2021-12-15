@@ -82,7 +82,7 @@ def make_image_box(boxes, names=None, name_to_id=None, scores=None, img_size=(10
     if scores is None:
         scores = [''] * len(boxes)
     else:
-        scores = [str(score) for score in scores]
+        scores = ["{:.2f}".format(score) for score in scores]
     for box, name, score in zip(boxes, names, scores):
         annotator.box_label(box, str(name) + '_' + score, color=colors(name_to_id[name]))
     return annotator.im
